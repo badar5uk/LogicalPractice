@@ -16,34 +16,30 @@ noTeenSum(2, 13, 1) → 3
 noTeenSum(2, 1, 14) → 3
 
      */
-    public static void fixTeen() {
-
-        System.out.print("Enter 3 integers: ");
-        Scanner userInput = new Scanner(System.in);
-        Integer[] numb = new Integer[3];
-
-        Integer sum = 0;
-
-        for (Integer i = 0; i < numb.length; i++) {
-            numb[i] = userInput.nextInt();
-            if (numb[i] >12 && numb[i]<20) {
-                numb[i] = 0;
-                sum += numb[i];
-            }
-            else if(numb[i]== 15 || numb[i] == 16){
-                numb[i] = 0;
-                sum += numb[i];
-            }
-            else {
-                sum+=numb[i];
-            }
-
+    public static Integer fixTeen(Integer n) {
+        switch (n){
+            case 13:
+            case 14:
+            case 17:
+            case 18:
+            case 19:
+                return 0;
+            default:
+                return n;
         }
-        System.out.println(sum);
-
     }
-        public static void main (String[]args){
-            fixTeen();
+
+    public static void main (String[]args){
+            System.out.print("Enter 3 integers: ");
+            Scanner userInput = new Scanner(System.in);
+
+            Integer sum = 0;
+
+            for (Integer i = 0; i < 3; i++) {
+                sum += fixTeen(userInput.nextInt());
+                System.out.print("Next: ");
+            }
+            System.out.println(sum);
     }
 }
 
