@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class SumOfTeen {
@@ -29,17 +30,19 @@ noTeenSum(2, 1, 14) → 3
         }
     }
 
+    public static void noTeenSum(){
+        Scanner userInput = new Scanner(System.in);
+        Integer sum = 0;
+        for (Integer i = 0; i < 3; i++) {
+            sum += fixTeen(userInput.nextInt());
+            System.out.print("Next: ");
+        }
+        System.out.println(sum);
+    }
+
     public static void main (String[]args){
-            System.out.print("Enter 3 integers: ");
-            Scanner userInput = new Scanner(System.in);
-
-            Integer sum = 0;
-
-            for (Integer i = 0; i < 3; i++) {
-                sum += fixTeen(userInput.nextInt());
-                System.out.print("Next: ");
-            }
-            System.out.println(sum);
+        System.out.print("Enter 3 integers: ");
+        noTeenSum();
     }
 }
 
