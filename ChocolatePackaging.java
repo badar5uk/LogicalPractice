@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class ChocolatePackaging {
@@ -35,7 +36,12 @@ Result: Return 4 because that’s how many small bars you’ll use.
         System.out.println("You are a chocolate factory" + "\n" + "Your goal is to find how to distribute the chocolates in the package ");
         System.out.println(" ");
         System.out.println("Note: A small bar is 1 Kilo" + "\n"+ "A big bar is 5 kilo" + "\n");
-        System.out.println("You will have "+scannerInpu()+ " small bars required to fill the package");
+        if(scannerInpu() == -1){
+            System.out.println("It cant be done");
+            System.out.println("You have -1 bars");
+        } else{
+            System.out.println("You will have "+scannerInpu()+ " small bars required to fill the package");
+        }
 
     }
 
@@ -46,13 +52,16 @@ Result: Return 4 because that’s how many small bars you’ll use.
         Scanner big = new Scanner(System.in);
         System.out.println("Enter the number of Big bars:  ");
         Integer bigInput = big.nextInt();
-        Integer output = makeChocolate(goalInput, bigInput);
+        Scanner small = new Scanner(System.in);
+        System.out.println("Enter the number of small bars: ");
+        Integer smallInput = small.nextInt();
+        Integer output = makeChocolate(goalInput, bigInput, smallInput);
         return output;
     }
-    public static Integer makeChocolate(Integer g, Integer b){
+    public static Integer makeChocolate(Integer g, Integer b, Integer s){
         b = b * 5;
         Integer i  = g - b;
-        if(i < 0){
+        if(i < s){
             i = -1;
             return i;
         }
